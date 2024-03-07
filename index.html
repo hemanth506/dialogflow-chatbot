@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dialogflow Message</title>
+  <link rel="stylesheet"
+    href="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/themes/df-messenger-default.css">
+  <script src="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/df-messenger.js"></script>
+  <style>
+    df-messenger {
+      z-index: 999;
+      position: fixed;
+      bottom: 16px;
+      right: 16px;
+    }
+  </style>
+</head>
+
+<body>
+  <df-messenger location="us-central1" project-id="cx-transformation" agent-id="d5726e24-b978-4e86-965c-72ba4b5297d5"
+    language-code="en" max-query-length="-1" allow-feedback="all">
+    <df-messenger-chat-bubble chat-title="Compound Entity V2 - Dev">
+    </df-messenger-chat-bubble>
+  </df-messenger>
+</body>
+
+</html>
