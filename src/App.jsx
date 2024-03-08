@@ -61,9 +61,7 @@ function App() {
               </df-messenger>
             </>
           ) : (
-            <>
-              <h1>401 - IP is Unauthorized</h1>
-            </>
+            <h1>401 - IP is Unauthorized</h1>
           )
         ) : (
           <h2>Loading...</h2>
