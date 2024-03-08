@@ -10,6 +10,7 @@ function App() {
   const [userIps] = useState(initalEnvUserIps);
   const [isLoading, setIsLoading] = useState(true);
   const [isIpFound, setIsIpFound] = useState(false);
+  const [isError, setIsError] = useState(false);
 
   useEffect(() => {
     async function getIpAddress() {
@@ -23,6 +24,7 @@ function App() {
         }
       } catch (error) {
         console.error("Error fetching IP address:", error);
+        setIsError(true);
       } finally {
         setIsLoading(false);
       }
@@ -40,31 +42,35 @@ function App() {
 
   return (
     <>
-      {!isLoading ? (
-        isIpFound ? (
-          <>
-            <button id="clear-session" onClick={handleClearSession}>
-              Clear session
-            </button>
-            <df-messenger
-              location="us-central1"
-              project-id="cx-transformation"
-              agent-id="d5726e24-b978-4e86-965c-72ba4b5297d5"
-              language-code="en"
-              max-query-length="-1"
-              allow-feedback="all"
-            >
-              <df-messenger-chat-bubble chat-title="Compound Entity V2 - Dev"></df-messenger-chat-bubble>
-            </df-messenger>
-          </>
+      {!isError ? (
+        !isLoading ? (
+          isIpFound ? (
+            <>
+              <button id="clear-session" onClick={handleClearSession}>
+                Clear session
+              </button>
+              <df-messenger
+                location="us-central1"
+                project-id="cx-transformation"
+                agent-id="d5726e24-b978-4e86-965c-72ba4b5297d5"
+                language-code="en"
+                max-query-length="-1"
+                allow-feedback="all"
+              >
+                <df-messenger-chat-bubble chat-title="Compound Entity V2 - Dev"></df-messenger-chat-bubble>
+              </df-messenger>
+            </>
+          ) : (
+            <>
+              <h1>Oops...</h1>
+              <h1>401 - IP is Unauthorized</h1>
+            </>
+          )
         ) : (
-          <>
-            <h1>Oops...</h1>
-            <h1>401 - IP is Unauthorized</h1>
-          </>
+          <h2>Loading...</h2>
         )
       ) : (
-        <h2>Loading...</h2>
+        <h2>Error Capturing the IP</h2>
       )}
     </>
   );
