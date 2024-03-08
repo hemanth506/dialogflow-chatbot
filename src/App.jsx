@@ -60,7 +60,7 @@ function App() {
         ) : (
           <>
             <h1>Oops...</h1>
-            <h1>Unknown Ip</h1>
+            <h1>401 - IP is Unauthorized</h1>
           </>
         )
       ) : (
